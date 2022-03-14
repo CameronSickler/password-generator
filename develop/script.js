@@ -164,3 +164,33 @@ console.log(numericResult + " checking if numeric selection is saved here");
 
 // end data collection for user selection of numeric values
 
+// begin data collection for user selection of special characters
+
+var specialCharacterResult = 0;
+
+function specialCharacterSelect() {
+    for (i = 0; i > -1; i++) {
+        if (specialCharacterResult === "yes" || specialCharacterResult === "Yes") {
+            console.log("user accepted special characters");
+            break;
+        } else if (specialCharacterResult === "no" || specialCharacterResult === "No") {
+            console.log("user rejected special characters");
+            break;
+        } else if (i == 0) {
+            specialCharacterResult = window.prompt("Do you want to use special characters? type yes or no")
+        } else {
+            specialCharacterResult = window.prompt("You choose an invalid option, try again. Please type yes or no");
+        }
+    }
+}
+
+// call function
+specialCharacterSelect();
+console.log("we made it past specialCharacterSelect");
+console.log(characterResult + " rechecking if characterResult variable still saved");
+console.log(upperCaseResult + " rechecking if upperCaseResult variable still saved");
+console.log(lowerCaseResult + " rechecking if uppercase selection is still saved");
+console.log(numericResult + " rechecking if numeric selection is still saved");
+console.log(specialCharacterResult + " checking if special character result is saved here");
+
+// end data collection for user selection of special characters
