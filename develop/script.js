@@ -24,28 +24,6 @@
 // console.log("Hello World!");
 
 
-
-// var characterSelect = function () {
-
-//     var characterResult = window.prompt("How many characters long do you want your password to be? Please type a number greater than 8 but less than 128");
-
-//     if (characterResult >= 8 && characterResult <= 128) {
-//         console.log("You chose a valid number");
-//         window.alert("you chose a valid number");
-//     } else {
-//         console.log("you chose an invalid option, try again");
-//         window.alert("you chose an invalid option, try again");
-//         characterSelect();
-//     }
-// }
-
-
-// characterSelect();
-
-
-// console.log("we made it!");
-
-
 var characterResult = 0;
 
 function characterSelect() {
