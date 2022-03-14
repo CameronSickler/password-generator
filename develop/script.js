@@ -167,8 +167,9 @@ specialCharacterSelect();
 console.log("we made it past specialCharacterSelect");
 console.log(characterResult + " rechecking if characterResult variable still saved");
 console.log(upperCaseResult + " rechecking if upperCaseResult variable still saved");
-console.log(lowerCaseResult + " rechecking if uppercase selection is still saved");
+console.log(lowerCaseResult + " rechecking if lowerCaseResult selection is still saved");
 console.log(numericResult + " rechecking if numeric selection is still saved");
 console.log(specialCharacterResult + " checking if special character result is saved here");
 
 // end data collection for user selection of special characters
+
