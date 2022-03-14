@@ -71,27 +71,36 @@ console.log(characterResult + " is the number of characters for the password. ")
 
 // begin data collection for user selection of uppercase character
 
-// var upperCaseResult = 0;
 
-// function upperCaseSelect() {
-//     for (i = 0; i > -1; i++) {
-//         if (upperCaseResult === "yes") {
-//             console.log("user accepted uppercase characters");
-//             break;
-//         } else if (upperCaseResult === "no") {
-//             console.log("user rejected uppercase characters");
-//             break;
-//         } else if (i == 0) {
-//             upperCaseResult = window.prompt("Do you want to use uppercase character? type yes or no")
-//         } else {
-//             upperCaseResult = window.prompt("You choose an invalid number, try again");
-//         }
-//     }
+// set upperCaseResult to 0 so that when upperCaseSelect function is called...
+//... the if and first else if condition are not met, and the else if (i==0) is true, so it executes the code block.
+// the user input from the 2nd else if prompt becomes the new value for the upperCaseResult variable if it passes...
+//... the first if condition when it loops through. It breaks the loop with break; and we move on.
 
+var upperCaseResult = 0;
 
-//     upperCaseSelect();
+function upperCaseSelect() {
+    for (i = 0; i > -1; i++) {
+        if (upperCaseResult === "yes") {
+            console.log("user accepted uppercase characters");
+            break;
+        } else if (upperCaseResult === "no") {
+            console.log("user rejected uppercase characters");
+            break;
+        } else if (i == 0) {
+            upperCaseResult = window.prompt("Do you want to use uppercase character? type yes or no")
+        } else {
+            upperCaseResult = window.prompt("You choose an invalid number, try again. Please type yes or no");
+        }
+    }
+}
 
-//     console.log("we made it past upperCaseSelect");
-//     console.log(characterResult);
-//     console.log(upperCaseResult);
+// call function
+upperCaseSelect();
+
+console.log("we made it past upperCaseSelect");
+console.log(characterResult + " rechecking if characterResult variable still saved");
+console.log(upperCaseResult + " checking if uppercase selection is saved here");
+
+// end data collection for user selection of uppercase character
 
