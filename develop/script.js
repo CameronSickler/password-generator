@@ -46,21 +46,52 @@
 // console.log("we made it!");
 
 
+var characterResult = 0;
 
-function runitall() {
-
-    var x = window.prompt("pick a number");
+function characterSelect() {
     for (i = 0; i > -1; i++) {
-        if (x <= 128 && x >= 8) {
-            window.alert("nice number selection");
+        if (characterResult <= 128 && characterResult >= 8) {
+            console.log("user selected a correct number value");
             break;
+        } else if (i == 0) {
+            characterResult = window.prompt("How many characters do you want in your password? Choose any number between 8 and 128");
         } else {
-            window.alert("You choose an invalid number, try again");
-            runitall();
+            characterResult = window.prompt("You choose an invalid number, please try again");
         }
     }
 }
 
-runitall();
+characterSelect();
 
-console.log("nice we got to it");
+console.log("system has stored the user value selected for total number of characters");
+console.log(characterResult + " is the number of characters for the password. ");
+
+// end data collection for user selection of character amount
+
+
+// begin data collection for user selection of uppercase character
+
+// var upperCaseResult = 0;
+
+// function upperCaseSelect() {
+//     for (i = 0; i > -1; i++) {
+//         if (upperCaseResult === "yes") {
+//             console.log("user accepted uppercase characters");
+//             break;
+//         } else if (upperCaseResult === "no") {
+//             console.log("user rejected uppercase characters");
+//             break;
+//         } else if (i == 0) {
+//             upperCaseResult = window.prompt("Do you want to use uppercase character? type yes or no")
+//         } else {
+//             upperCaseResult = window.prompt("You choose an invalid number, try again");
+//         }
+//     }
+
+
+//     upperCaseSelect();
+
+//     console.log("we made it past upperCaseSelect");
+//     console.log(characterResult);
+//     console.log(upperCaseResult);
+
