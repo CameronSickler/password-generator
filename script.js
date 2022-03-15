@@ -1,8 +1,9 @@
-// Array of strings set as variable - global
+// Variables that contain data that will be converted into a password
 var bucketOfChoices = [];
 const bucketOfPassword = [];
 var bucketOfPasswordString = "placeholder";
-// List of Arrays of strings set as variables that contain the characters used in a generated password - global
+
+// Variables that contain all the characters available for the randomly generated password
 var upperC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 var lowerC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 var numericV = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -24,9 +25,20 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
 // Begin series of functions set as variables here
+
+
+//was working on a clear Data function, but no finished. Need to code removing the 
+//old generated password from the browser if the user clicks the btn to create more 
+//passwords.
+
+// function clearData() {
+//     characterResult = 0;
+//     upperCaseResult = 0;
+//     lowerCaseResult = 0;
+//     numericResult = 0;
+//     specialCharacterResult = 0;
+// }
 
 var characterResult = 0;
 // this function will prompt user for input regarding how many characters the password should contain
@@ -34,7 +46,7 @@ function characterSelect() {
     for (i = 0; i > -1; i++) {
         if (characterResult <= 128 && characterResult >= 8) {
             console.log("user selected a correct number value of " + characterResult);
-            window.alert("Thank you. " + " There will be a total of " + characterResult + " characters in your password. ");
+            window.alert("Thank you. " + "There will be a total of " + characterResult + " characters in your password. ");
             return;
         } else if (i == 0) {
             characterResult = window.prompt("How many characters do you want in your password? Choose any number between 8 and 128");
@@ -135,8 +147,8 @@ function specialCharacterSelect() {
 
 // End series of functions set as variables here
 
-// Begin variable containing function that will loop until an array is filled with random values 
-// that meet the user's criteria. This array will then use its items as the password.
+// This function uses a loop to add randomly picked array items that meets users selected criteria and add them to a seperate array variable
+// the loop is broken as soon as we have a randomly picked array item to fill the total character requirements from the users criteria
 function passwordCreator() {
     i = 0
     while (i < characterResult) {
@@ -176,37 +188,23 @@ function passwordCreator() {
     }
 }
 
+// this function turns the array holding the password elements into a string and then removes the commas. 
 function makePasswordString() {
     bucketOfPasswordString = bucketOfPassword.toString();
     bucketOfPasswordString = bucketOfPasswordString.replaceAll(',', '');
 }
 
 
-// this function will call all relevant functions for gathing user data for password criteria in the order...
-//.. listed below. The listed functions are designed to return user prompt data to an array called bucketOfChoices.
-//.. the last function in this generatePassword function should use a Math object to compile bucketOfChoices array items...
-//.. into a password. The return should be designed to hold the password and it becomes displayed on the browser for the user to see. 
+// this function calls all neccessary functions to gather user criteria, create and randomized password
+// and display the password within a box in the browser for the user to see. 
 function generatePassword() {
+    // clearData();
     characterSelect();
     upperCaseSelect();
     lowerCaseSelect();
     numericSelect();
     specialCharacterSelect();
-    finalChecker();
     passwordCreator();
     makePasswordString();
-    // call a function that gens a pw
     return (bucketOfPasswordString);
 }
-
-// This function is designed to show the coder if user input is being stored into variables and those variables are saving the input
-// so the variables can be used globally with values that reflect the user's input
-function finalChecker() {
-    console.log(characterResult + " characterResult");
-    console.log(upperCaseResult + " upperCaseResult");
-    console.log(lowerCaseResult + " lowerCaseResult");
-    console.log(numericResult + " numericResult");
-    console.log(specialCharacterResult + " specialCharacterResult");
-    console.log(bucketOfChoices + " number of choices");
-    console.log(bucketOfPassword);
-};
