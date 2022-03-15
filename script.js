@@ -1,8 +1,7 @@
 // Array of strings set as variable - global
 var bucketOfChoices = [];
-var bucketOfPassword = [];
+const bucketOfPassword = [];
 // List of Arrays of strings set as variables that contain the characters used in a generated password - global
-var numOfC = characterResult;
 var upperC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 var lowerC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 var numericV = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -35,7 +34,6 @@ function characterSelect() {
         if (characterResult <= 128 && characterResult >= 8) {
             console.log("user selected a correct number value of " + characterResult);
             window.alert("Thank you. " + " There will be a total of " + characterResult + " characters in your password. ");
-            bucketOfChoices = bucketOfChoices.concat(numOfC);
             return;
         } else if (i == 0) {
             characterResult = window.prompt("How many characters do you want in your password? Choose any number between 8 and 128");
@@ -136,8 +134,48 @@ function specialCharacterSelect() {
 
 // End series of functions set as variables here
 
-
-
+// Begin variable containing function that will loop until an array is filled with random values 
+// that meet the user's criteria. This array will then use its items as the password.
+function passwordCreator() {
+    for (i = 0; i < characterResult;) {
+        if (i < characterResult) {
+            if (upperCaseResult === "yes" || upperCaseResult === "Yes") {
+                addUpperC = upperC[Math.floor(Math.random() * upperC.length)];
+                bucketOfPassword.push(addUpperC);
+                console.log(addUpperC + " this is supposed to be addUpperC");
+                console.log("a random uppercase letter was added to the bucketOfPassword array");
+                i = i + 1;
+            }
+        }
+        if (i < characterResult) {
+            if (lowerCaseResult === "yes" || lowerCaseResult === "Yes") {
+                addLowerC = lowerC[Math.floor(Math.random() * lowerC.length)];
+                bucketOfPassword.push(addLowerC);
+                console.log(addLowerC + " this is supposed to be addLowerC");
+                console.log("a random lowercase letter was added to the bucketOfPassword array");
+                i = i + 1;
+            }
+        }
+        if (i < characterResult) {
+            if (numericResult === "yes" || numericResult === "Yes") {
+                addNumericV = numericV[Math.floor(Math.random() * numericV.length)];
+                bucketOfPassword.push(addNumericV);
+                console.log(addNumericV + " this is supposed to be addNumericV");
+                console.log("a random number was added to the bucketOfPassword array");
+                i = i + 1;
+            }
+        }
+        if (i < characterResult) {
+            if (specialCharacterResult === "yes" || specialCharacterResult === "Yes") {
+                addSpecialV = specialV[Math.floor(Math.random() * specialV.length)];
+                bucketOfPassword.push(addSpecialV);
+                console.log(addSpecialV + " this is supposed to be addSpecialV");
+                console.log("a random special character was added to the bucketOfPassword array");
+                i = i + 1;
+            }
+        }
+    }
+}
 
 // this function will call all relevant functions for gathing user data for password criteria in the order...
 //.. listed below. The listed functions are designed to return user prompt data to an array called bucketOfChoices.
@@ -150,6 +188,7 @@ function generatePassword() {
     numericSelect();
     specialCharacterSelect();
     finalChecker();
+    passwordCreator();
     // call a function that gens a pw
     return "temp password";
 }
@@ -162,5 +201,6 @@ function finalChecker() {
     console.log(lowerCaseResult + " lowerCaseResult");
     console.log(numericResult + " numericResult");
     console.log(specialCharacterResult + " specialCharacterResult");
-    console.log(bucketOfChoices);
+    console.log(bucketOfChoices + " number of choices");
+    console.log(bucketOfPassword);
 };
