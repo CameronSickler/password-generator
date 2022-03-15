@@ -138,45 +138,50 @@ function specialCharacterSelect() {
 // Begin variable containing function that will loop until an array is filled with random values 
 // that meet the user's criteria. This array will then use its items as the password.
 function passwordCreator() {
-    for (i = 0; i < characterResult;) {
-        if (i < characterResult) {
-            if (upperCaseResult === "yes" || upperCaseResult === "Yes") {
-                addUpperC = upperC[Math.floor(Math.random() * upperC.length)];
-                bucketOfPassword.push(addUpperC);
-                console.log(addUpperC + " this is supposed to be addUpperC");
-                console.log("a random uppercase letter was added to the bucketOfPassword array");
-                i = i + 1;
-            }
-            if (i < characterResult) {
-                if (lowerCaseResult === "yes" || lowerCaseResult === "Yes") {
-                    addLowerC = lowerC[Math.floor(Math.random() * lowerC.length)];
-                    bucketOfPassword.push(addLowerC);
-                    console.log(addLowerC + " this is supposed to be addLowerC");
-                    console.log("a random lowercase letter was added to the bucketOfPassword array");
-                    i = i + 1;
-                }
-            }
-            if (i < characterResult) {
-                if (numericResult === "yes" || numericResult === "Yes") {
-                    addNumericV = numericV[Math.floor(Math.random() * numericV.length)];
-                    bucketOfPassword.push(addNumericV);
-                    console.log(addNumericV + " this is supposed to be addNumericV");
-                    console.log("a random number was added to the bucketOfPassword array");
-                    i = i + 1;
-                }
-            }
-            if (i < characterResult) {
-                if (specialCharacterResult === "yes" || specialCharacterResult === "Yes") {
-                    addSpecialV = specialV[Math.floor(Math.random() * specialV.length)];
-                    bucketOfPassword.push(addSpecialV);
-                    console.log(addSpecialV + " this is supposed to be addSpecialV");
-                    console.log("a random special character was added to the bucketOfPassword array");
-                    i = i + 1;
-                }
-            }
+    i = 0
+    while (i < characterResult) {
+        if (upperCaseResult === "yes" || upperCaseResult === "Yes") {
+            addUpperC = upperC[Math.floor(Math.random() * upperC.length)];
+            bucketOfPassword.push(addUpperC);
+            console.log(addUpperC + " this is a random uppercase letter added to the bucketOfPassword array");
+            i = i + 1;
+        }
+        if (i >= characterResult) {
+            break;
+        }
+        if (lowerCaseResult === "yes" || lowerCaseResult === "Yes") {
+            addLowerC = lowerC[Math.floor(Math.random() * lowerC.length)];
+            bucketOfPassword.push(addLowerC);
+            console.log(addLowerC + " this is a random lowercase letter added to the bucketOfPassword array");
+            i = i + 1;
+        }
+        if (i >= characterResult) {
+            break;
+        }
+        if (numericResult === "yes" || numericResult === "Yes") {
+            addNumericV = numericV[Math.floor(Math.random() * numericV.length)];
+            bucketOfPassword.push(addNumericV);
+            console.log(addNumericV + " this is a random number added to the bucketOfPassword array");
+            i = i + 1;
+        }
+        if (i >= characterResult) {
+            break;
+        }
+        if (specialCharacterResult === "yes" || specialCharacterResult === "Yes") {
+            addSpecialV = specialV[Math.floor(Math.random() * specialV.length)];
+            bucketOfPassword.push(addSpecialV);
+            console.log(addSpecialV + " this is a random special character added to the bucketOfPassword array");
+            i = i + 1;
         }
     }
 }
+
+function makePasswordString() {
+    bucketOfPasswordString = bucketOfPassword.toString();
+    bucketOfPasswordString = bucketOfPasswordString.replaceAll(',', '');
+}
+
+
 // this function will call all relevant functions for gathing user data for password criteria in the order...
 //.. listed below. The listed functions are designed to return user prompt data to an array called bucketOfChoices.
 //.. the last function in this generatePassword function should use a Math object to compile bucketOfChoices array items...
@@ -189,8 +194,9 @@ function generatePassword() {
     specialCharacterSelect();
     finalChecker();
     passwordCreator();
+    makePasswordString();
     // call a function that gens a pw
-    return (bucketOfPassword);
+    return (bucketOfPasswordString);
 }
 
 // This function is designed to show the coder if user input is being stored into variables and those variables are saving the input
