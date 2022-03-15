@@ -1,31 +1,33 @@
-// Assignment code here
-// TEST COMMENT HERE TO INSURE BRANCHES ARE MERGING AND PUSHING FROM FEATURE TO MAIN CORRECTLY AFTER INITIAL SETUP!
+var bucketOfChoices = [];
+var upperC = ['A', 'B', 'C'];
+var lowerC = ['a', 'b', 'c'];
+var numericV = ['1', '2', '3'];
+var specialV = ['!', '$', '?'];
+//array of strings
 
 
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
+console.log("Hello World!");
 
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
-
-// // Write password to the #password input
-// function writePassword() {
-//     var password = generatePassword();
-//     var passwordText = document.querySelector("#password");
-
-//     passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-
-// console.log("Hello World!");
-
+// Begin my code here
 
 var characterResult = 0;
-
+// this function will prompt user for input regarding how many characters the password should contain
 function characterSelect() {
     for (i = 0; i > -1; i++) {
         if (characterResult <= 128 && characterResult >= 8) {
@@ -39,29 +41,18 @@ function characterSelect() {
     }
 }
 
-characterSelect();
-
 console.log("system has stored the user value selected for total number of characters");
 console.log(characterResult + " is the number of characters for the password. ");
 
-// end data collection for user selection of character amount
-
-
-// begin data collection for user selection of uppercase character
-
-
-// set upperCaseResult to 0 so that when upperCaseSelect function is called...
-//... the if and first else if condition are not met, and the else if (i==0) is true, so it executes the code block.
-// the user input from the 2nd else if prompt becomes the new value for the upperCaseResult variable if it passes...
-//... the first if condition when it loops through. It breaks the loop with break; and we move on.
 
 var upperCaseResult = 0;
-
+// this function will prompt user for input regarding the use of uppercase letters in the password
 function upperCaseSelect() {
     for (i = 0; i > -1; i++) {
         if (upperCaseResult === "yes" || upperCaseResult === "Yes") {
             console.log("user accepted uppercase characters");
-            break;
+            bucketOfChoices = bucketOfChoices.concat(upperC)
+            return;
         } else if (upperCaseResult === "no" || upperCaseResult === "No") {
             console.log("user rejected uppercase characters");
             break;
@@ -73,24 +64,19 @@ function upperCaseSelect() {
     }
 }
 
-// call function
-upperCaseSelect();
-
 console.log("we made it past upperCaseSelect");
 console.log(characterResult + " rechecking if characterResult variable still saved");
 console.log(upperCaseResult + " checking if uppercase selection is saved here");
 
-// end data collection for user selection of uppercase characters
-
-// begin data collection for user selection of lowercase characters
 
 var lowerCaseResult = 0;
-
+// this function will prompt user for input regarding the use of lowercase letters in the password
 function lowerCaseSelect() {
     for (i = 0; i > -1; i++) {
         if (lowerCaseResult === "yes" || lowerCaseResult === "Yes") {
             console.log("user accepted lowercase characters");
-            break;
+            bucketOfChoices = bucketOfChoices.concat(upperC);
+            return;
         } else if (lowerCaseResult === "no" || lowerCaseResult === "No") {
             console.log("user rejected lowercase characters");
             break;
@@ -102,25 +88,21 @@ function lowerCaseSelect() {
     }
 }
 
-// call function
-lowerCaseSelect();
 
 console.log("we made it past lowerCaseSelect");
 console.log(characterResult + " rechecking if characterResult variable still saved");
 console.log(upperCaseResult + " rechecking if upperCaseResult variable still saved");
 console.log(lowerCaseResult + " checking if uppercase selection is saved here");
 
-// end data collection for user selection of lowercase characters
-
-// begin data collection for user selection of numeric values
 
 var numericResult = 0;
-
+// this function will prompt user for input regarding the use of numeric characters in the password
 function numericSelect() {
     for (i = 0; i > -1; i++) {
         if (numericResult === "yes" || numericResult === "Yes") {
             console.log("user accepted lowercase characters");
-            break;
+            bucketOfChoices = bucketOfChoices.concat(numericV)
+            return;
         } else if (numericResult === "no" || numericResult === "No") {
             console.log("user rejected lowercase characters");
             break;
@@ -132,25 +114,21 @@ function numericSelect() {
     }
 }
 
-// call function
-numericSelect();
 console.log("we made it past numericSelect");
 console.log(characterResult + " rechecking if characterResult variable still saved");
 console.log(upperCaseResult + " rechecking if upperCaseResult variable still saved");
 console.log(lowerCaseResult + " rechecking if uppercase selection is still saved");
 console.log(numericResult + " checking if numeric selection is saved here");
 
-// end data collection for user selection of numeric values
-
-// begin data collection for user selection of special characters
 
 var specialCharacterResult = 0;
-
+// this function will prompt user for input regarding the use of special characters in the password
 function specialCharacterSelect() {
     for (i = 0; i > -1; i++) {
         if (specialCharacterResult === "yes" || specialCharacterResult === "Yes") {
             console.log("user accepted special characters");
-            break;
+            bucketOfChoices = bucketOfChoices.concat(specialV);
+            return;
         } else if (specialCharacterResult === "no" || specialCharacterResult === "No") {
             console.log("user rejected special characters");
             break;
@@ -162,14 +140,23 @@ function specialCharacterSelect() {
     }
 }
 
-// call function
-specialCharacterSelect();
+// this function will call all relevant functions for gathing user data for password criteria in the order...
+//.. listed below. The listed functions are designed to return user prompt data to an array called bucketOfChoices.
+//.. the last function in this generatePassword function should use a Math object to compile bucketOfChoices array items...
+//.. into a password. The return should be designed to hold the password and it becomes displayed on the browser for the user to see. 
+function generatePassword() {
+    characterSelect();
+    upperCaseSelect();
+    lowerCaseSelect();
+    numericSelect();
+    specialCharacterSelect();
+    // call a function that gens a pw
+    return "temporary password";
+}
+
 console.log("we made it past specialCharacterSelect");
 console.log(characterResult + " rechecking if characterResult variable still saved");
 console.log(upperCaseResult + " rechecking if upperCaseResult variable still saved");
 console.log(lowerCaseResult + " rechecking if lowerCaseResult selection is still saved");
 console.log(numericResult + " rechecking if numeric selection is still saved");
 console.log(specialCharacterResult + " checking if special character result is saved here");
-
-// end data collection for user selection of special characters
-
