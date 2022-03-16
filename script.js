@@ -9,23 +9,26 @@ var lowerC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', '
 var numericV = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var specialV = ['!', '$', '?', '@', '%', '&'];
 
+//Variables that contain user input gathered within functions ending in the word "select"
+var characterResult = 0;
+var upperCaseResult = 0;
+var lowerCaseResult = 0;
+var numericResult = 0;
+var specialCharacterResult = 0;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 // Write password to the #password input
 function writePassword() {
     var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
     passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Begin series of functions set as variables here
 
 
 //was working on a clear Data function, but no finished. Need to code removing the 
@@ -40,7 +43,7 @@ generateBtn.addEventListener("click", writePassword);
 //     specialCharacterResult = 0;
 // }
 
-var characterResult = 0;
+
 // this function will prompt user for input regarding how many characters the password should contain
 function characterSelect() {
     for (i = 0; i > -1; i++) {
@@ -57,7 +60,6 @@ function characterSelect() {
     }
 }
 
-var upperCaseResult = 0;
 // this function will prompt user for input regarding the use of uppercase letters in the password
 function upperCaseSelect() {
     for (i = 0; i > -1; i++) {
@@ -79,7 +81,6 @@ function upperCaseSelect() {
     }
 }
 
-var lowerCaseResult = 0;
 // this function will prompt user for input regarding the use of lowercase letters in the password
 function lowerCaseSelect() {
     for (i = 0; i > -1; i++) {
@@ -101,7 +102,6 @@ function lowerCaseSelect() {
     }
 }
 
-var numericResult = 0;
 // this function will prompt user for input regarding the use of numeric characters in the password
 function numericSelect() {
     for (i = 0; i > -1; i++) {
@@ -123,7 +123,6 @@ function numericSelect() {
     }
 }
 
-var specialCharacterResult = 0;
 // this function will prompt user for input regarding the use of special characters in the password
 function specialCharacterSelect() {
     for (i = 0; i > -1; i++) {
@@ -144,8 +143,6 @@ function specialCharacterSelect() {
         }
     }
 }
-
-// End series of functions set as variables here
 
 // This function uses a loop to add randomly picked array items that meets users selected criteria and add them to a seperate array variable
 // the loop is broken as soon as we have a randomly picked array item to fill the total character requirements from the users criteria
